@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<html>
+<head>
+<title>GALLERY PAGE</title>
+</head>
+<style>
+    {#{#}
+    {#    font-family: cursive;color: orangered;#}
+    {#}#}
+</style>
+<body style="alignment: center">
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+{% block content %}
+    {% if fform %}
+        {% for i in feedbacks %}
+            <b style='color: orangered'> Name = {{ i.name }}</b><br>
+            <b style='color: orangered'> Rating = {{ i.rating }}</b><br>
+            <b style='color: orangered'> Date = {{ i.date }}</b><br>
+            <b style='color: orangered'> Feedback = {{ i.feedback }}</b><br><br>
+        {% endfor %}
+
+    {% else %}
+
+    {% endif %}
+    <form method="post">
+    {% csrf_token %}
+    {{ fform.as_p}}
+    <input type="submit" value="Send" class="btn btn-sucess">
+    <input type="reset" value="Clear" class="btn btn-danger">
+    </form>
+{% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
